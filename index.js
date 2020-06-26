@@ -16,9 +16,17 @@ class SortedLinkedList {
                  this.head=newNode;
                  newNode.next=tempNode;
         }
-        else if(this.comparator(this.head.value,newNode.value)<=0){
+        else if(this.comparator(this.head.value,newNode.value)<0){
             let current = this.head;
-            while (current.next !== undefined && current.next.value <= value) {
+            while (current.next !== undefined && current.next.value > value) {
+                current = current.next;
+            }
+            newNode.next = current.next;
+            current.next = newNode;
+        }
+        else if(this.comparator(this.head.value,newNode.value)===0){
+            let current = this.head;
+            while (current.next !== undefined && current.next.value === value) {
                 current = current.next;
             }
             newNode.next = current.next;
@@ -61,21 +69,35 @@ class SortedLinkedList {
     }
 }
 
+// let scores = new SortedLinkedList((a, b) => b-a); // passing comparator function here
+// scores.add(54);
+// scores.add(33);
+// scores.add(91);
+// scores.add(44);
+// scores.add(11);
+// scores.add(14);
+// scores.add(12);
+// console.log(`${scores}`);
+// let students = new SortedLinkedList((a, b) => a.charCodeAt(0) - b.charCodeAt(0));
+// students.add('Raj');
+// students.add('Mark');
+//  students.add('Arnav');
+//  students.add('Ramesh');
+// console.log(`${students}`);
 let scores = new SortedLinkedList((a, b) => b-a); // passing comparator function here
-scores.add(54);
-scores.add(33);
-scores.add(91);
-scores.add(44);
+scores.add(0);
 scores.add(11);
-scores.add(14);
-scores.add(12);
+  scores.add(12);
+ scores.add(12);
+ scores.add(14);
+ scores.add(33);
+ scores.add(54);
+ scores.add(11);
+scores.add(30);
+scores.add(60);
+scores.add(7);
+scores.add(13);
 console.log(`${scores}`);
-let students = new SortedLinkedList((a, b) => a.charCodeAt(0) - b.charCodeAt(0));
-students.add('Raj');
-students.add('Mark');
- students.add('Arnav');
- students.add('Ramesh');
-console.log(`${students}`);
 // let list1 = new SortedLinkedList();
 // list1.add(2);
 // list1.add(3);
