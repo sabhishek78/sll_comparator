@@ -98,6 +98,7 @@ scores.add(60);
 scores.add(7);
 scores.add(13);
 console.log(`${scores}`);
+
 // let list1 = new SortedLinkedList();
 // list1.add(2);
 // list1.add(3);
